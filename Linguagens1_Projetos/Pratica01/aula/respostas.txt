@@ -1,0 +1,8 @@
+1. C:\Program Files\Java\jdk1.8.0_162
+2. C:\Program Files\Java\jdk1.8.0_162\bin\javac.exe e C:\Program Files\Java\jdk1.8.0_162\bin\java.exe.
+3. Podemos utilizar uma IDE, ou pelo cmd digitando "javac nomedoarquivo.java".
+4. java -jar "nomedoarquivo.jar" (quando o arquivo está em .jar) ou java "nomedoarquivo.class".
+5. São variáveis criadas no sistema operacional para simplificar alguns comandos, armazenam um PATH para o sistema operacional rodar e identificar as coisas.
+6. Não, somente se for no seu ambiente.
+7. Podemos alterar no painel de controle > configurações do ambiente > variáveis de ambiente. Ou pelo CMD, com alguns comandos podemos definir a variável e o PATH
+8. Para que todos os programas no sistema operacional possam identificar o PATH do java instalado na máquina do usuário.
