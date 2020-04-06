@@ -14,7 +14,7 @@ public class Transacao {
     }
     public static boolean pagarConta(Contas pagador, Contas recebedor, String qrCode){
         String[] hash = qrCode.split(";");
-        if ((Integer.parseInt(hash[0]) == recebedor.getIdConta()) & (hash[1].equals(recebedor.getTitular().getNome()))){
+        if ((Integer.parseInt(hash[0]) == recebedor.getIdConta()) & (hash[1].equals(recebedor.getTitular().getNome()) & !(pagador.equals(recebedor)))){
             boolean sacado = pagador.sacar(Double.parseDouble(hash[2]));
             if(sacado){
                 recebedor.depositar(Double.parseDouble(hash[2]));
