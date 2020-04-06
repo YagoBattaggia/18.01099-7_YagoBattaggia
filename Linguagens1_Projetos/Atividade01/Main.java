@@ -10,7 +10,7 @@ public class Main{
         Usuarios user2 = new Usuarios("Felipe", "123", "teste@teste.com");
         Contas conta2 = new Contas(250,user2);
         System.out.println("Nome Usuário: " + conta2.getTitular().getNome() + " - Saldo: " + Double.toString(conta2.getSaldo()));
-        Usuarios user3 = new Usuarios("Felipe", "123", "teste@teste.com");
+        Usuarios user3 = new Usuarios("User", "123", "teste@teste.com");
         Contas conta3 = new Contas(3000,user3);
         System.out.println("Nome Usuário: " + conta3.getTitular().getNome() + " - Saldo: " + Double.toString(conta3.getSaldo()));
         
