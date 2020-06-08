@@ -15,7 +15,6 @@ import atividade.members.*;
  * @version 1.0
  */
 public class Sistema {
-    private static List<Membro> equipe;
     private static String jornada;
 
     public Sistema(){
@@ -38,7 +37,7 @@ public class Sistema {
     static private void menu(){
         boolean sistema = true;
         while(sistema){
-            equipe = new ArrayList<Membro>();
+            List<Membro> equipe = new ArrayList<Membro>();
             System.out.println("TOTAL" + equipe.size());
             System.out.println("BEM VINDO AO SISTEMA DO MAsK_S0c13ty");
             System.out.println("Escolha a opcao desejada:");
