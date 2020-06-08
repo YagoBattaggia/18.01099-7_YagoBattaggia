@@ -2,34 +2,31 @@ package atividade.models;
 
 import atividade.enumerates.EnumMembro;
 import atividade.interfaces.Apresentacao;
+import atividade.interfaces.PostarMensagem;
 
-public class Membro implements Apresentacao{
+/**
+ * Classe responsável pelos membros da equipe, por meio dela os membros são registrados e realizam suas devidas funções.
+ *
+ * @author Yago Garcia Battaggia - 18.01099-7@maua.br
+ * @author Guilherme Ballardini - 18.01353-8@maua.br
+ * @version 1.0
+ */
+public abstract class Membro implements Apresentacao{
     private EnumMembro funcao;
     private String email;
     private String nome;
-    private String assinaturaRegular;
-    private String assinaturaExtra;
 
     
-    public Membro(String nome, String email, int funcao){
+    public Membro(String nome, String email){
         this.nome = nome;
         this.email = email;
-        if (funcao == 1){
-            this.funcao = EnumMembro.MOBILE_MEMBERS;
-            this.assinaturaRegular = "Happy Coding!";
-            this.assinaturaExtra = "MAsK_S0c13ty";
-        } else if (funcao == 2){
-            this.funcao = EnumMembro.HEAVY_LIFTERS;
-            this.assinaturaRegular = "Podem contar conosco!";
-            this.assinaturaExtra = "N00b_qu3_n_Se_r3pita.bat";
-        } else if (funcao == 3){
-            this.funcao = EnumMembro.SCRIPTGUYS;
-            this.assinaturaRegular = "Prazer em ajudar novos amigos de código!";
-            this.assinaturaExtra = "QU3Ro_S3us_r3curs0s.py";
-        } else if (funcao == 4){
-            this.funcao = EnumMembro.BIG_BROTHERS;
-            this.assinaturaRegular = "Sempre ajudando as pessoas membros ou não S2!";
-            this.assinaturaExtra = "...";
-        }
+    }
+
+    @Override
+    public String toString() {
+        return "Apresentação do Membro: \nnome: " 
+        + nome +"\n" + "email: " 
+        + email + "\n"+ "funcao: " 
+        +  funcao + "\n";
     }
 }
