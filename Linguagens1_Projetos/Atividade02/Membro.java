@@ -1,0 +1,3 @@
+public enum Membros(){
+    HEAVY_LIFTERS, MOBILE_MEMBERS, BIG_BROTHERS, SCRIPT_GUYS;
+}
