@@ -1,5 +1,5 @@
 package maua.interfaces;
 
-public interface autentica {
+public interface autenticaUsuarios {
     public boolean autentica();
 }
