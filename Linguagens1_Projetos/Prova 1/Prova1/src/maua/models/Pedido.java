@@ -36,4 +36,12 @@ public class Pedido {
         }
         return idGerado;
     }
+
+    public String getId(){
+        return this.id;
+    }
+
+    public void setStatus(Enum<statusPedido> status){
+        this.statusDoPedido = status;
+    }
 }

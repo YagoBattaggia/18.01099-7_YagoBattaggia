@@ -8,6 +8,7 @@ import maua.interfaces.autenticaUsuarios;
 import maua.models.Pedido;
 import maua.models.Usuario;
 import maua.Enums.formaPagamento;
+import maua.Enums.statusPedido;
 
 public class Sistema implements autenticaUsuarios{
     ArrayList<Usuario> usuarios;
@@ -51,6 +52,26 @@ public class Sistema implements autenticaUsuarios{
                             item.printarPedido();
                         }
                         break;
+                    case 3:
+                        if(autentica()){
+                            for (Pedido item : pedidos) {
+                                item.printarPedido();
+                            }
+                            System.out.print("Qual o código do pedido que deseja atualizar? ");
+                            String produtoParaAtualizar = scanner.nextLine();
+                            System.out.println("0 - Realizado");
+                            System.out.println("1 - Preparação");
+                            System.out.println("2 - Saiu para entrega");
+                            System.out.println("3 - Entregue");
+                            System.out.println("4 - Devolvido");
+                            System.out.print("Para qual status o pedido deve ser atualizado? ");
+                            int novoStatus = Integer.parseInt(scanner.nextLine());
+                            for (Pedido item : pedidos) {
+                                if(item.getId().equals(produtoParaAtualizar)){
+                                    item.setStatus(statusPedido.values()[novoStatus]);
+                                }
+                            }
+                        }
                 }
             }
         }
