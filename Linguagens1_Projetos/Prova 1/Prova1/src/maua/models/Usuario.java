@@ -1,7 +1,5 @@
 package maua.models;
 
-import javax.lang.model.element.Element;
-
 /**
  * Essa classe gerencia e modela o usuário do sistema
  * 
@@ -26,7 +24,7 @@ public class Usuario {
     }
 
     public boolean checaSenha(String tentativa){
-        if(senha.equals(tentativa){
+        if(senha.equals(tentativa)){
             return true;
         } else {
             return false;
