@@ -30,6 +30,8 @@ public class Sistema implements autenticaUsuarios{
                 opt = Integer.parseInt(scanner.nextLine());
                 switch(opt){
                     case 1:
+                    //DEVE AUTENTICAR APENAS A SENHA OU PODE SER USER E SENHA?
+                    if(autentica()){
                         System.out.print("Descrição do pedido: ");
                         String descricao = scanner.nextLine();
                         //Devo aceitar com , tbm? (Criar função para alterar a , para .);
@@ -43,6 +45,7 @@ public class Sistema implements autenticaUsuarios{
                         int indexPagamento = Integer.parseInt(scanner.nextLine());
                         pedidos.add(new Pedido(descricao, valor, formaPagamento.values()[indexPagamento]));
                         break;
+                    }
                     case 2:
                         for (Pedido item : pedidos) {
                             item.printarPedido();
