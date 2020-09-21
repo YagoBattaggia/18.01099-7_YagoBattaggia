@@ -1,10 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="800.0" maxWidth="800.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox prefHeight="400.0" prefWidth="600.0" />
+      <VBox maxHeight="800.0" maxWidth="800.0" minHeight="800.0" minWidth="800.0" prefHeight="800.0" prefWidth="800.0" style="-fx-padding: 30px; -fx-background-color: #BF2441;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="80.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #002E2B; -fx-text-fill: #FFFFFF; -fx-font-size: 20px;" text="VOLTAR" />
+                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #002E2B; -fx-text-fill: #FFFFFF; -fx-font-size: 20px;" text="AVANÇAR" translateX="340.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets></Button>
+               </children>
+            </HBox>
+            <ImageView fitHeight="366.667" fitWidth="266.667" pickOnBounds="true" preserveRatio="true" translateX="240.0" />
+            <FlowPane prefHeight="200.0" prefWidth="600.0">
+               <children>
+                  <Label prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #72A1A6; -fx-border-color: #002E2B;" text="ID">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label maxHeight="30.0" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #72A1A6; -fx-border-color: #002E2B;" text="URL" translateX="10.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <FlowPane.margin>
+                        <Insets />
+                     </FlowPane.margin>
+                  </Label>
+                  <Label layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #72A1A6; -fx-border-color: #002E2B;" text="Nome" translateY="10.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="10.0" layoutY="40.0" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #72A1A6; -fx-border-color: #002E2B;" text="Raridade" translateX="10.0" translateY="10.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="310.0" layoutY="40.0" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #72A1A6; -fx-border-color: #002E2B;" text="Serie" translateY="20.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="10.0" layoutY="70.0" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #72A1A6; -fx-border-color: #002E2B;" text="Coleção" translateX="10.0" translateY="20.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="60.0" top="20.0" />
+               </padding></FlowPane>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #002E2B; -fx-text-fill: #FFFFFF; -fx-font-size: 20px;" text="EDITAR" translateX="150.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #002E2B; -fx-text-fill: #FFFFFF; -fx-font-size: 20px;" text="SALVAR" translateX="190.0" />
+               </children>
+            </HBox>
+         </children></VBox>
    </children>
 </AnchorPane>
