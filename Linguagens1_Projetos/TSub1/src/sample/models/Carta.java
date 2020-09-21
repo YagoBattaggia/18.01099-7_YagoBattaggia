@@ -1,4 +1,4 @@
-package models;
+package sample.models;
 
 public class Carta {
     private String url;
@@ -8,7 +8,7 @@ public class Carta {
     private String serie;
     private String colecao;
 
-    public void Carta(String url, String id, String nome, String raridade, String serie, String colecao){
+    public Carta(String url, String id, String nome, String raridade, String serie, String colecao){
         this.url = url;
         this.id = id;
         this.nome = nome;
