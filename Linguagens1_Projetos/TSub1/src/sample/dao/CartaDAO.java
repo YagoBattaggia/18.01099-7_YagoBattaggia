@@ -6,6 +6,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Yago Garcia Battaggia - 18.01099-7
+ * @since 21/09/2020
+ */
+
 public class CartaDAO implements DAO<Carta> {
     private Connection connection;
     private String dbConnectionString = "jdbc:sqlite:database.db";
@@ -17,6 +22,12 @@ public class CartaDAO implements DAO<Carta> {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Busca no banco de dados e salva os dados encontrados em uma Lista
+     * <br> Caso tenha erro, imprime no console
+     * @return Lista com os dados encontrados no banco de dados
+     */
 
     @Override
     public List<Carta> getAll() {
@@ -42,6 +53,13 @@ public class CartaDAO implements DAO<Carta> {
         return cartas;
     }
 
+    /**
+     * Atualiza os dados da carta recebida no banco de dados
+     * <br> Caso tenha erro, imprime no console
+     * @return Retorna boolean caso a carta tenha sido alterada no banco de dados
+     * @param carta Objeto da carta atualizado
+     */
+
     @Override
     public boolean update(Carta carta) {
         try{
@@ -60,16 +78,27 @@ public class CartaDAO implements DAO<Carta> {
         }
     }
 
+    /**
+     * Deleta a carta recebida do banco de dados
+     * <br> Caso tenha erro, imprime no console
+     * @param id o id da carta a ser excluida
+     */
+
     @Override
-    public void delete(String carta) {
+    public void delete(String id) {
         try{
             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM cartas WHERE id = ?");
-            preparedStatement.setString(1, carta);
+            preparedStatement.setString(1, id);
+            preparedStatement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Adiciona a carta ao banco de dados
+     * <br> Caso tenha erro, imprime no console
+     * @param carta Objeto da carta a ser adicionada
+     */
     @Override
     public void create(Carta carta) {
         try{

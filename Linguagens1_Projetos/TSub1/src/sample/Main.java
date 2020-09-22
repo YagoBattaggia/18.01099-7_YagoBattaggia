@@ -6,8 +6,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * @author Yago Garcia Battaggia - 18.01099-7
+ * @since 21/09/2020
+ */
 public class Main extends Application {
 
+    /**
+     * Configura e inicia a aplicação do JavaFX
+     */
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
