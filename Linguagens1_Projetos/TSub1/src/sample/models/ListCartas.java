@@ -12,7 +12,9 @@ public class ListCartas {
 
     public boolean idEstaNaLista(String id){
         for (Carta carta: this.listCartas){
-            return carta.getId().equals(id);
+            if(carta.getId().equals(id)){
+                return true;
+            }
         }
         return false;
     }
@@ -27,5 +29,21 @@ public class ListCartas {
 
     public void addCarta(Carta newCarta){
         listCartas.add(newCarta);
+    }
+
+    public void removeCarta(String id){
+        this.listCartas.removeIf(carta -> carta.getId().equals(id));
+    }
+
+    public void editCarta(Carta newCarta){
+        for (Carta carta: this.listCartas){
+            if(carta.getId().equals(newCarta.getId())){
+                carta.setNome(newCarta.getNome());
+                carta.setUrl(newCarta.getUrl());
+                carta.setSerie(newCarta.getSerie());
+                carta.setColecao(newCarta.getColecao());
+                carta.setRaridade(newCarta.getRaridade());
+            }
+        }
     }
 }
