@@ -61,10 +61,10 @@ public class CartaDAO implements DAO<Carta> {
     }
 
     @Override
-    public void delete(Carta carta) {
+    public void delete(String carta) {
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement("DELETE * FROM cartas WHERE id = ?");
-            preparedStatement.setString(1, carta.getId());
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM cartas WHERE id = ?");
+            preparedStatement.setString(1, carta);
         } catch (Exception e) {
             e.printStackTrace();
         }
