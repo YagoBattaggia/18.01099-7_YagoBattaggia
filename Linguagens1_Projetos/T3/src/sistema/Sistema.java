@@ -192,7 +192,6 @@ public class Sistema {
                     listManga = mangaDao.getAll();
                     System.out.println("Lista de mangas cadastrados: ");
                     listManga.forEach(System.out::println);
-                    System.out.println(listManga);
                     menuManga();
                     break;
                 default:
