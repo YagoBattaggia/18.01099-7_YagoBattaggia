@@ -40,6 +40,7 @@ public class MangaDao implements Dao<Manga> {
                         result.getString("tipo"),
                         result.getDouble("nota")
                 );
+                System.out.println(manga);
                 mangas.add(manga);
             }
             result.close();
@@ -54,7 +55,7 @@ public class MangaDao implements Dao<Manga> {
     public Manga getOneData(String nome) {
         try{
             Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("SELECT * FROM animes");
+            ResultSet result = statement.executeQuery("SELECT * FROM mangas");
             while (result.next()){
                 Manga manga = new Manga(
                         result.getString("url"),

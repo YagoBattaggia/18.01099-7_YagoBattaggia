@@ -4,8 +4,15 @@ import dao.AnimeDao;
 import dao.MangaDao;
 import models.Anime;
 import models.Manga;
+import parsers.AnimeParser;
+import parsers.MangaParser;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -22,20 +29,22 @@ public class Sistema {
     private int opcao;
 
 
+
     public Sistema() {
         scanner = new Scanner(System.in);
         listAnimes = new ArrayList<>();
+        listManga = new ArrayList<>();
         animeDao = new AnimeDao();
         mangaDao = new MangaDao();
     }
 
-    public void run(){
+    public void run() throws IOException, InterruptedException {
         boolean alive = true;
         do {
             menu();
             while(true) {
                 try {
-                    opcao = Integer.parseInt(scanner.next());
+                    opcao = Integer.parseInt(scanner.nextLine());
                     break;
                 } catch (NumberFormatException e) {
                     System.out.println("Por favor inserir um numero valido: ");
@@ -76,7 +85,7 @@ public class Sistema {
     private void menuManga() {
         System.out.println("Escolha qual você deseja checar:");
         System.out.println("1-Procurar Manga");
-        System.out.println("2-Exibir animes registrados");
+        System.out.println("2-Exibir mangas registrados");
         System.out.println("0-Voltar");
     }
 
@@ -85,7 +94,7 @@ public class Sistema {
         do {
             while(true) {
                 try {
-                    opcao = Integer.parseInt(scanner.next());
+                    opcao = Integer.parseInt(scanner.nextLine());
                     break;
                 } catch (NumberFormatException e) {
                     System.out.println("Por favor inserir um numero valido: ");
@@ -102,28 +111,32 @@ public class Sistema {
                     anime = animeDao.getOneData(name);
                     if (anime == null) {
                         System.out.println("Não encontrado no Banco de Dados, fazendo request!");
-                        requestAPI(name,"anime");
+                        System.out.println(requestAnimeAPI(name));
+
                     } else {
                         System.out.println(anime);
                     }
+                    menuAnime();
                     break;
                 case 2:
                     listAnimes = animeDao.getAll();
                     System.out.println("Lista de animes cadastrados: ");
-                    listAnimes.forEach(animes -> System.out.println(animes));
+                    listAnimes.forEach(System.out::println);
+                    menuAnime();
                     break;
                 default:
                     System.out.println("Opcao invalida");
+                    menuAnime();
             }
         } while (animeRun);
     }
 
     private void manga() throws IOException, InterruptedException{
-                boolean MangaRun = true;
+        boolean MangaRun = true;
         do {
             while(true) {
                 try {
-                    opcao = Integer.parseInt(scanner.next());
+                    opcao = Integer.parseInt(scanner.nextLine());
                     break;
                 } catch (NumberFormatException e) {
                     System.out.println("Por favor inserir um numero valido: ");
@@ -140,42 +153,62 @@ public class Sistema {
                     manga = mangaDao.getOneData(name);
                     if (manga == null) {
                         System.out.println("Não encontrado no Banco de Dados, fazendo request!");
-                        requestAPI(name,"manga");
+                        Manga result = requestMangaAPI(name);
+                        System.out.println(result);
                     } else {
                         System.out.println(manga);
                     }
+                    menuManga();
                     break;
                 case 2:
                     listManga = mangaDao.getAll();
                     System.out.println("Lista de mangas cadastrados: ");
-                    listManga.forEach(mangas -> System.out.println(mangas));
+                    listManga.forEach(System.out::println);
+                    System.out.println(listManga);
+                    menuManga();
                     break;
                 default:
                     System.out.println("Opcao invalida");
             }
         } while (MangaRun);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
+    private Manga requestMangaAPI(String name) throws IOException, InterruptedException {
+
+            HttpClient client = HttpClient.newBuilder()
+                    .version(HttpClient.Version.HTTP_2)
+                    .connectTimeout(Duration.ofSeconds(10))
+                    .build();
+
+            HttpRequest request = HttpRequest.newBuilder()
+                    .GET().uri(URI.create("https://api.jikan.moe/v3/search/manga?q=" + name.replace(" ", "%20"))).build();
+
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+            MangaParser mangaParser = new MangaParser();
+            Manga manga = mangaParser.ParseJSON(response.body());
+            mangaDao.create(manga);
+            return manga;
+    }
+    private Anime requestAnimeAPI(String name) throws IOException, InterruptedException {
+        System.out.println("Fazendo Request");
+        HttpClient client = HttpClient.newBuilder()
+                .version(HttpClient.Version.HTTP_2)
+                .connectTimeout(Duration.ofSeconds(10))
+                .build();
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .GET().uri(URI.create("https://api.jikan.moe/v3/search/anime?q=" + name.replace(" ", "%20"))).build();
+
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        AnimeParser animeParser = new AnimeParser();
+        Anime anime = animeParser.ParseJSON(response.body());
+        animeDao.create(anime);
+        return anime;
+    }
+
+
+
+
 
 }

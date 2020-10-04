@@ -51,7 +51,7 @@ public class AnimeDao implements Dao<Anime> {
     public Anime getOneData(String nome) {
         try{
             Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("SELECT * FROM animes");
+            ResultSet result = statement.executeQuery("SELECT * FROM animes WHERE nome LIKE '%"+nome+"%'");
             while (result.next()){
                 Anime anime = new Anime(
                         result.getString("url"),
@@ -78,7 +78,7 @@ public class AnimeDao implements Dao<Anime> {
     @Override
     public void create(Anime anime) {
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO cartas (url, nome, sinopse, quantEpisodios, nota) VALUES (?,?,?,?,?)");
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO animes (url, nome, sinopse, quantEpisodios, nota) VALUES (?,?,?,?,?)");
             preparedStatement.setString(1, anime.getUrl());
             preparedStatement.setString(2, anime.getNome());
             preparedStatement.setString(3, anime.getSinopse());
