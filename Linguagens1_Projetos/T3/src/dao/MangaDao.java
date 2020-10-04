@@ -6,11 +6,20 @@ import models.Manga;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Classe concreta que vai servir de DAO para o manga.
+ * @author Guilherme Ballardini - Guiballa@hotmail.com
+ * @author Yago Garcia Battaggia - yagobattaggia@gmail.com
+ * @since 04/10/2020
+ * @version 1.0
+ */
 public class MangaDao implements Dao<Manga> {
     private Connection connection;
     private String dbConnectionString = "jdbc:sqlite:database.db";
 
+    /**
+     * connection é obtido pela funcao DriverManager.getConnection
+     */
     public MangaDao(){
         try {
             connection = DriverManager.getConnection((dbConnectionString));
@@ -50,7 +59,11 @@ public class MangaDao implements Dao<Manga> {
 
         return mangas;
     }
-
+    /**
+     * Busca no banco de dados e salva um dado especifico encontrado em uma Lista
+     * <br> Caso tenha erro, imprime no console
+     * @return Objeto com os dados encontrados no banco de dados
+     */
     @Override
     public Manga getOneData(String nome) {
         try{
@@ -79,7 +92,7 @@ public class MangaDao implements Dao<Manga> {
     /**
      * Adiciona o anime ao banco de dados
      * <br> Caso tenha erro, imprime no console
-     * @param manga Objeto do anime a ser adicionado
+     * @param manga Objeto do manga a ser adicionado
      */
     @Override
     public void create(Manga manga) {

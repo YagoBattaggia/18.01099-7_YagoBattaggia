@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"models","l":"Anime"},{"p":"dao","l":"AnimeDao"},{"p":"parsers","l":"AnimeParser"},{"p":"dao","l":"Dao"},{"p":"<Unnamed>","l":"Main"},{"p":"models","l":"Manga"},{"p":"dao","l":"MangaDao"},{"p":"parsers","l":"MangaParser"},{"p":"sistema","l":"Sistema"}]

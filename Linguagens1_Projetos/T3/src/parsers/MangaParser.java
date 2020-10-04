@@ -7,11 +7,23 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * Classe concreta que vai servir de parser para o manga.
+ * @author Guilherme Ballardini - Guiballa@hotmail.com
+ * @author Yago Garcia Battaggia - yagobattaggia@gmail.com
+ * @since 04/10/2020
+ * @version 1.0
+ */
 public class MangaParser {
     private MangaDao mangaDao;
-    public static Manga ParseJSON(String JSON) {
+
+    /**
+     * Método PardeJSON, que ele vai receber um json e retornar o objeto manga.
+     * @param json Json que será analisado
+     */
+    public static Manga ParseJSON(String json) {
         try {
-            JSONObject jsonObject = new JSONObject(JSON);
+            JSONObject jsonObject = new JSONObject(json);
             JSONArray result = jsonObject.getJSONArray("results");
             Manga manga = new Manga(
                     ((JSONObject) result.get(0)).getString("url"),

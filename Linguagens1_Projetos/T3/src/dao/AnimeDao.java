@@ -5,11 +5,20 @@ import models.Anime;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Classe concreta que vai servir de DAO para o anime.
+ * @author Guilherme Ballardini - Guiballa@hotmail.com
+ * @author Yago Garcia Battaggia - yagobattaggia@gmail.com
+ * @since 04/10/2020
+ * @version 1.0
+ */
 public class AnimeDao implements Dao<Anime> {
     private Connection connection;
     private String dbConnectionString = "jdbc:sqlite:database.db";
 
+    /**
+     * connection é obtido pela funcao DriverManager.getConnection
+     */
     public AnimeDao(){
         try {
             connection = DriverManager.getConnection((dbConnectionString));
@@ -46,7 +55,11 @@ public class AnimeDao implements Dao<Anime> {
 
         return animes;
     }
-
+    /**
+     * Busca no banco de dados e salva um dado especifico encontrado em uma Lista
+     * <br> Caso tenha erro, imprime no console
+     * @return Objeto com os dados encontrados no banco de dados
+     */
     @Override
     public Anime getOneData(String nome) {
         try{
