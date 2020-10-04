@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Scanner;
 
 
+
 public class Sistema {
     private String name;
     private Scanner scanner;
@@ -25,8 +26,7 @@ public class Sistema {
         scanner = new Scanner(System.in);
         listAnimes = new ArrayList<>();
         animeDao = new AnimeDao();
-        scanner = new Scanner(System.in);
-
+        mangaDao = new MangaDao();
     }
 
     public void run(){
@@ -81,34 +81,101 @@ public class Sistema {
     }
 
     private void anime() throws IOException, InterruptedException {
-        Anime anime;
-        System.out.println("Qual nome do Anime:");
-        name = scanner.nextLine();
-        anime = animeDao.getOneData(name);
-        if (anime == null) {
-            System.out.println("Não encontrado no Banco de Dados, fazendo request!");
-            requestAPI(name,"anime");
-        } else {
-            System.out.println(anime);
-        }
+        boolean animeRun = true;
+        do {
+            while(true) {
+                try {
+                    opcao = Integer.parseInt(scanner.next());
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("Por favor inserir um numero valido: ");
+                }
+            }
+            switch (opcao){
+                case 0:
+                    animeRun = false;
+                    break;
+                case 1:
+                    Anime anime;
+                    System.out.println("Qual nome do Anime:");
+                    name = scanner.nextLine();
+                    anime = animeDao.getOneData(name);
+                    if (anime == null) {
+                        System.out.println("Não encontrado no Banco de Dados, fazendo request!");
+                        requestAPI(name,"anime");
+                    } else {
+                        System.out.println(anime);
+                    }
+                    break;
+                case 2:
+                    listAnimes = animeDao.getAll();
+                    System.out.println("Lista de animes cadastrados: ");
+                    listAnimes.forEach(animes -> System.out.println(animes));
+                    break;
+                default:
+                    System.out.println("Opcao invalida");
+            }
+        } while (animeRun);
     }
 
     private void manga() throws IOException, InterruptedException{
-        Manga manga;
-        System.out.println("Qual nome do Manga:");
-        name = scanner.nextLine();
+                boolean MangaRun = true;
+        do {
+            while(true) {
+                try {
+                    opcao = Integer.parseInt(scanner.next());
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("Por favor inserir um numero valido: ");
+                }
+            }
+            switch (opcao){
+                case 0:
+                    MangaRun = false;
+                    break;
+                case 1:
+                    Manga manga;
+                    System.out.println("Qual nome do Manga:");
+                    name = scanner.nextLine();
+                    manga = mangaDao.getOneData(name);
+                    if (manga == null) {
+                        System.out.println("Não encontrado no Banco de Dados, fazendo request!");
+                        requestAPI(name,"manga");
+                    } else {
+                        System.out.println(manga);
+                    }
+                    break;
+                case 2:
+                    listManga = mangaDao.getAll();
+                    System.out.println("Lista de mangas cadastrados: ");
+                    listManga.forEach(mangas -> System.out.println(mangas));
+                    break;
+                default:
+                    System.out.println("Opcao invalida");
+            }
+        } while (MangaRun);
 
-        manga = mangaDao.getOneData(name);
 
-        if (manga == null) {
-            System.out.println("Não encontrado no Banco de Dados, fazendo request!");
-            requestAPI(name,"manga");
-        } else {
-            System.out.println(manga);
-        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
-
-
-
 
 }
