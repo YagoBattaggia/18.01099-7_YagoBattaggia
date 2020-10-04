@@ -26,10 +26,10 @@ public class AnimeDao implements Dao<Anime> {
     @Override
     public List<Anime> getAll() {
         List<Anime> animes = new ArrayList<>();
-        try{
+        try {
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("SELECT * FROM animes");
-            while (result.next()){
+            while (result.next()) {
                 Anime anime = new Anime(
                         result.getString("url"),
                         result.getString("nome"),
@@ -45,6 +45,28 @@ public class AnimeDao implements Dao<Anime> {
         }
 
         return animes;
+    }
+
+    @Override
+    public Anime getOneData(String nome) {
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM animes WHERE nome LIKE '%" + nome + "%'");
+            while (result.next()) {
+                Anime anime = new Anime(
+                        result.getString("url"),
+                        result.getString("nome"),
+                        result.getString("sinopse"),
+                        result.getInt("quantEpisodios"),
+                        result.getDouble("nota")
+                );
+                result.close();
+                return anime;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**

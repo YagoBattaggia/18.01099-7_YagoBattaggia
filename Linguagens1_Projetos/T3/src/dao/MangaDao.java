@@ -1,5 +1,6 @@
 package dao;
 
+import models.Anime;
 import models.Manga;
 
 import java.sql.*;
@@ -47,6 +48,30 @@ public class MangaDao implements Dao<Manga> {
         }
 
         return mangas;
+    }
+
+    @Override
+    public Manga getOneData(String nome) {
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM mangas WHERE nome LIKE '%" + nome + "%'");
+            while (result.next()) {
+                Manga manga = new Manga(
+                        result.getString("url"),
+                        result.getString("nome"),
+                        result.getString("sinopse"),
+                        result.getInt("quantCapitulos"),
+                        result.getInt("quantVolumes"),
+                        result.getString("tipo"),
+                        result.getDouble("nota")
+                );
+                result.close();
+                return manga;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**
