@@ -55,7 +55,7 @@ class _HomeState extends State<HomePage> {
     );
   }
   Future<String> getHistory() async {
-    var apiKey = "RGAPI-5a083a8b-69d6-4f4f-b0f0-c5495bb82912";
+    var apiKey = "RGAPI-eb286488-a7af-43ce-9eba-6035d2d2c3ef";
     var requisicao = NetworkHelper(url: "https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + controladorNick.text + "?api_key=" + apiKey);
     var json = summonerV4.fromJson(await requisicao.getData());
     var accountId = json.accountId;
