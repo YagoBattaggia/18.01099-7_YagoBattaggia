@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PersonagemDAO implements Dao{
+public class PersonagemDAO implements Dao<Personagem>{
     private Connection connection;
     private String dbConnectionString = "jdbc:sqlite:sqlite.db";
 
@@ -52,22 +52,39 @@ public class PersonagemDAO implements Dao{
     }
 
     @Override
-    public void create(Object o) {
+    public void create(Personagem personagem) {
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO animes (nome, raca, profissao, mana, ataque, ataqueM, defesa, defesaM, velocidade, destreza, experiencia, nivelAtual) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
+            preparedStatement.setString(1, personagem.getNome());
+            preparedStatement.setString(2, personagem.getRaca().toString());
+            preparedStatement.setString(3, personagem.getProfissao().toString());
+            preparedStatement.setInt(4, personagem.getMana());
+            preparedStatement.setInt(5, personagem.getAtaque());
+            preparedStatement.setInt(6, personagem.getAtaqueM());
+            preparedStatement.setInt(7, personagem.getDefesa());
+            preparedStatement.setInt(8, personagem.getDefesaM());
+            preparedStatement.setInt(9, personagem.getVelocidade());
+            preparedStatement.setInt(10, personagem.getDestreza());
+            preparedStatement.setInt(11, personagem.getExperiencia());
+            preparedStatement.setInt(12, personagem.getNivelAtual());
+            preparedStatement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void delete(Personagem personagem) {
 
     }
 
     @Override
-    public void delete(Object o) {
+    public void update(Personagem personagem) {
 
     }
 
     @Override
-    public void update(Object o) {
-
-    }
-
-    @Override
-    public Object getOneData(String nome) {
+    public Personagem getOneData(String nome) {
         return null;
     }
 }
