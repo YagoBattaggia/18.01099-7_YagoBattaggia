@@ -54,7 +54,7 @@ public class PersonagemDAO implements Dao<Personagem>{
     @Override
     public void create(Personagem personagem) {
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO animes (nome, raca, profissao, mana, ataque, ataqueM, defesa, defesaM, velocidade, destreza, experiencia, nivelAtual) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO personagens (nomePersonagem, raca, profissao, mana, ataque, ataqueM, defesa, defesaM, velocidade, destreza, experiencia, nivelAtual) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
             preparedStatement.setString(1, personagem.getNome());
             preparedStatement.setString(2, personagem.getRaca().toString());
             preparedStatement.setString(3, personagem.getProfissao().toString());

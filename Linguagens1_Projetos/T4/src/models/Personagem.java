@@ -34,6 +34,25 @@ public class Personagem {
         this.nivelAtual = nivelAtual;
     }
 
+    @Override
+    public String toString() {
+        return "Personagem{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", raca=" + raca +
+                ", profissao=" + profissao +
+                ", mana=" + mana +
+                ", ataque=" + ataque +
+                ", ataqueM=" + ataqueM +
+                ", defesa=" + defesa +
+                ", defesaM=" + defesaM +
+                ", velocidade=" + velocidade +
+                ", destreza=" + destreza +
+                ", experiencia=" + experiencia +
+                ", nivelAtual=" + nivelAtual +
+                '}';
+    }
+
     public void setNome(String nome) {
         this.nome = nome;
     }

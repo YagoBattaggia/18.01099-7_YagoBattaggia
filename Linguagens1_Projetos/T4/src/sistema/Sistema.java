@@ -6,6 +6,7 @@ import enums.Racas;
 import models.Personagem;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Sistema {
@@ -61,6 +62,8 @@ public class Sistema {
                 case 2:
                     break;
                 case 3:
+                    System.out.println("Lista de personagens existentes: ");
+                    personagemDAO.getAll().forEach(System.out::println);;
                     break;
                 case 4:
                     break;
@@ -83,7 +86,7 @@ public class Sistema {
     }
 
     private Profissoes perguntaProfissao() {
-        System.out.println("Qual ação deseja realizar?");
+        System.out.println("Qual a profissão?");
         System.out.println("1 - AGRICULTOR");
         System.out.println("2 - VENDEDOR");
         System.out.println("3 - FERREIRO");
@@ -152,7 +155,7 @@ public class Sistema {
     }
 
     private Racas perguntaRacas() {
-        System.out.println("Qual ação deseja realizar?");
+        System.out.println("Qual a raça?");
         System.out.println("1 - DRACONATO");
         System.out.println("2 - ANAO");
         System.out.println("3 - ELFO");
