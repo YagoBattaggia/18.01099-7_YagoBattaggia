@@ -59,13 +59,10 @@ public class Sistema {
 
                     break;
                 case 2:
-
                     break;
                 case 3:
-
                     break;
                 case 4:
-
                     break;
                 default:
                     System.out.println("Opcao invalida");
