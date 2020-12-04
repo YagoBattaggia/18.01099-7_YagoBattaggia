@@ -66,6 +66,14 @@ public class Sistema {
                     personagemDAO.getAll().forEach(System.out::println);;
                     break;
                 case 4:
+                    System.out.println("Qual o ID do personagem que deseja apagar: ");
+                    int ID = Integer.parseInt(scanner.nextLine());
+                    boolean isDeleted = personagemDAO.delete(ID);
+                    if (isDeleted){
+                        System.out.println("Personagem deletado");
+                    } else {
+                        System.out.println("Erro ao deletar");
+                    }
                     break;
                 default:
                     System.out.println("Opcao invalida");

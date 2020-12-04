@@ -74,8 +74,16 @@ public class PersonagemDAO implements Dao<Personagem>{
     }
 
     @Override
-    public void delete(Personagem personagem) {
-
+    public boolean delete(int ID) {
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM personagens where ID = ?");
+            preparedStatement.setInt(1, ID);
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
