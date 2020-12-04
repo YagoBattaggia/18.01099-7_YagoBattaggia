@@ -1,10 +1,13 @@
 package models;
 
+import enums.Profissoes;
+import enums.Racas;
+
 public class Personagem {
     private int id;
     private String nome;
-    private String raca;
-    private String profissao;
+    private Racas raca;
+    private Profissoes profissao;
     private int mana;
     private int ataque;
     private int ataqueM;
@@ -15,7 +18,7 @@ public class Personagem {
     private int experiencia;
     private int nivelAtual;
 
-    public Personagem(int id, String nome, String raca, String profissao, int mana, int ataque, int ataqueM, int defesa, int defesaM, int velocidade, int destreza, int experiencia, int nivelAtual) {
+    public Personagem(int id, String nome, Racas raca, Profissoes profissao, int mana, int ataque, int ataqueM, int defesa, int defesaM, int velocidade, int destreza, int experiencia, int nivelAtual) {
         this.id = id;
         this.nome = nome;
         this.raca = raca;
@@ -35,11 +38,11 @@ public class Personagem {
         this.nome = nome;
     }
 
-    public void setRaca(String raca) {
+    public void setRaca(Racas raca) {
         this.raca = raca;
     }
 
-    public void setProfissao(String profissao) {
+    public void setProfissao(Profissoes profissao) {
         this.profissao = profissao;
     }
 
@@ -87,11 +90,11 @@ public class Personagem {
         return nome;
     }
 
-    public String getRaca() {
+    public Racas getRaca() {
         return raca;
     }
 
-    public String getProfissao() {
+    public Profissoes getProfissao() {
         return profissao;
     }
 
