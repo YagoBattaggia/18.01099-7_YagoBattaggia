@@ -12,5 +12,5 @@ public interface Dao<T> {
     void create(T t);
     boolean delete(int t);
     void update(T t);
-    T getOneData(String nome);
+    T getOneData(int ID);
 }

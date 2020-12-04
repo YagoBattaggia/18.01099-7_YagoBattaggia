@@ -92,7 +92,33 @@ public class PersonagemDAO implements Dao<Personagem>{
     }
 
     @Override
-    public Personagem getOneData(String nome) {
+    public Personagem getOneData(int ID) {
+        try{
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM personagens WHERE ID =" + ID);
+            while (result.next()){
+                Personagem personagem = new Personagem(
+                        result.getInt("ID"),
+                        result.getString("nomePersonagem"),
+                        Racas.valueOf(result.getString("raca")),
+                        Profissoes.valueOf(result.getString("profissao")),
+                        result.getInt("mana"),
+                        result.getInt("ataque"),
+                        result.getInt("ataqueM"),
+                        result.getInt("defesa"),
+                        result.getInt("defesaM"),
+                        result.getInt("velocidade"),
+                        result.getInt("destreza"),
+                        result.getInt("experiencia"),
+                        result.getInt("nivelAtual")
+                );
+                result.close();
+                return personagem;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return null;
     }
 }

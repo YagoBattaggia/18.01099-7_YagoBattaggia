@@ -60,6 +60,7 @@ public class Sistema {
 
                     break;
                 case 2:
+
                     break;
                 case 3:
                     System.out.println("Lista de personagens existentes: ");
