@@ -82,11 +82,9 @@ public class Sistema {
                                 personagem.setNome(scanner.nextLine());
                                 break;
                             case 2:
-                                System.out.print("Qual deve ser a nova Raça? ");
                                 personagem.setRaca(perguntaRacas());
                                 break;
                             case 3:
-                                System.out.print("Qual deve ser a nova Profissão? ");
                                 personagem.setProfissao(perguntaProfissao());
                                 break;
                             case 4:
@@ -130,13 +128,7 @@ public class Sistema {
                                 break;
                         }
                     }
-                    
-
-
-
-
-
-
+                    personagemDAO.update(personagem);
                     break;
                 case 3:
                     System.out.println("Lista de personagens existentes: ");

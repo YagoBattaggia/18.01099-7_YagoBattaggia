@@ -89,7 +89,7 @@ public class PersonagemDAO implements Dao<Personagem>{
     @Override
     public void update(Personagem personagem) {
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE personagens SET (nomePersonagem, raca, profissao, mana, ataque, ataqueM, defesa, defesaM, velocidade, destreza, experiencia, nivelAtual) VALUES (?,?,?,?,?,?,?,?,?,?,?,?) WHERE ID = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE personagens SET nomePersonagem = ?, raca = ?, profissao = ?, mana = ?, ataque = ?, ataqueM = ?, defesa = ?, defesaM = ?, velocidade = ?, destreza = ?, experiencia = ?, nivelAtual = ? WHERE ID = ?");
             preparedStatement.setString(1, personagem.getNome());
             preparedStatement.setString(2, personagem.getRaca().toString());
             preparedStatement.setString(3, personagem.getProfissao().toString());
