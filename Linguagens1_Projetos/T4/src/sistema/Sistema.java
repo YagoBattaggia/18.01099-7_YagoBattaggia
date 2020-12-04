@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/* TODO JAVADOCS, RAs, try and catch para as strings */
+
 public class Sistema {
     PersonagemDAO personagemDAO = new PersonagemDAO();
 
