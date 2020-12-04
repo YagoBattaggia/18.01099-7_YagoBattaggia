@@ -6,6 +6,7 @@ import enums.Racas;
 import models.Personagem;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -60,6 +61,68 @@ public class Sistema {
 
                     break;
                 case 2:
+                    System.out.print("Qual o ID do personagem que deseja alterar? ");
+                    int id;
+                    while(true) {
+                        try {
+                            id = Integer.parseInt(scanner.nextLine());
+                            break;
+                        } catch (NumberFormatException e) {
+                            System.out.println("Por favor inserir um ID valido!!");
+                        }
+                    }
+                    Personagem personagem = personagemDAO.getOneData(id);
+                    System.out.println(personagem.toString());
+                    String[] listaAlteracao = perguntaAlteracao();
+                    for (String s : listaAlteracao) {
+                        int op = Integer.parseInt(s);
+                        switch (op){
+                            case 1:
+                                break;
+                            case 2:
+
+                                break;
+                            case 3:
+
+                                break;
+                            case 4:
+
+                                break;
+                            case 5:
+
+                                break;
+                            case 6:
+
+                                break;
+                            case 7:
+
+                                break;
+                            case 8:
+
+                                break;
+                            case 9:
+
+                                break;
+                            case 10:
+
+                                break;
+                            case 11:
+
+                                break;
+                            case 12:
+
+                                break;
+                            default:
+                                System.out.println("Opcao invalida!!");
+                                break;
+                        }
+                    }
+
+
+
+
+
+
 
                     break;
                 case 3:
@@ -67,9 +130,16 @@ public class Sistema {
                     personagemDAO.getAll().forEach(System.out::println);;
                     break;
                 case 4:
-                    System.out.println("Qual o ID do personagem que deseja apagar: ");
-                    int ID = Integer.parseInt(scanner.nextLine());
-                    boolean isDeleted = personagemDAO.delete(ID);
+                    System.out.print("Qual o ID do personagem que deseja apagar? ");
+                    while(true) {
+                        try {
+                            id = Integer.parseInt(scanner.nextLine());
+                            break;
+                        } catch (NumberFormatException e) {
+                            System.out.println("Por favor inserir um ID valido!!");
+                        }
+                    }
+                    boolean isDeleted = personagemDAO.delete(id);
                     if (isDeleted){
                         System.out.println("Personagem deletado");
                     } else {
@@ -92,6 +162,37 @@ public class Sistema {
         System.out.println("3 - Consultar os personagens existentes.");
         System.out.println("4 - Deletar algum personagem.");
         System.out.println("0 - Sair do programa.");
+    }
+    private String[] perguntaAlteracao() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("O que deseja alterar?");
+        System.out.println("1 - Nome");
+        System.out.println("2 - Raça");
+        System.out.println("3 - Profissao");
+        System.out.println("4 - Mana");
+        System.out.println("5 - Ataque");
+        System.out.println("6 - Ataque Mágico");
+        System.out.println("7 - Defesa");
+        System.out.println("8 - Defesa Mágico");
+        System.out.println("9 - Velocidade");
+        System.out.println("10 - Destreza");
+        System.out.println("11 - Esperiência");
+        System.out.println("12 - Nivel atual");
+        System.out.println("Insira os valores que deseja alterar, separados por uma virgula (1,4,7)");
+        String mudanca;
+        while(true) {
+            try {
+                mudanca = scanner.nextLine().replace(" ","");
+                String[] arrayMudanca = mudanca.split(",");
+                if(arrayMudanca.length > 12){
+                    throw new Exception();
+                } else {
+                    return arrayMudanca;
+                }
+            } catch (Exception e) {
+                System.out.println("Por favor inserir uma opção valida e com no máximo 12 valores separados por virgula");
+            }
+        }
     }
 
     private Profissoes perguntaProfissao() {
@@ -120,7 +221,7 @@ public class Sistema {
                     opcao = Integer.parseInt(scanner.nextLine());
                     break;
                 } catch (NumberFormatException e) {
-                    System.out.println("Por favor inserir um numero valido: ");
+                    System.out.println("Por favor inserir um numero valido!!");
                 }
             }
             switch (opcao){
@@ -156,7 +257,7 @@ public class Sistema {
                     return Profissoes.DESEMPREGADO;
 
                 default:
-                    System.out.println("Opcao invalida");
+                    System.out.println("Opcao invalida!!");
                     break;
             }
         } while (alive);
@@ -183,7 +284,7 @@ public class Sistema {
                     opcao = Integer.parseInt(scanner.nextLine());
                     break;
                 } catch (NumberFormatException e) {
-                    System.out.println("Por favor inserir um numero valido: ");
+                    System.out.println("Por favor inserir um numero valido!!");
                 }
             }
             switch (opcao){
@@ -206,7 +307,7 @@ public class Sistema {
                 case 9:
                     return Racas.METAMORFO;
                 default:
-                    System.out.println("Opcao invalida");
+                    System.out.println("Opcao invalida!!");
                     break;
             }
         } while (alive);
