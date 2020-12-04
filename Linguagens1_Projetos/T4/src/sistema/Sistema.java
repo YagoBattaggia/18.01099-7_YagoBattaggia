@@ -46,27 +46,122 @@ public class Sistema {
                     break;
                 case 1:
                     System.out.print("Qual o nome do personagem? ");
-                    String nome = scanner.nextLine();
+                    String nome;
+
+                    while(true) {
+                        try {
+                            nome = scanner.nextLine();
+                            if(nome.isEmpty()){
+                                throw new Exception();
+                            } else {
+                                break;
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Por favor inserir um nome valido!!");
+
+                        }
+                    }
                     Racas raca = perguntaRacas();
                     Profissoes profissao = perguntaProfissao();
                     System.out.print("Qual a mana? ");
-                    int mana = Integer.parseInt(scanner.nextLine());
+                    int mana;
+                    while(true) {
+                        try {
+                            mana = Integer.parseInt(scanner.nextLine());
+                            break;
+                        } catch (NumberFormatException e) {
+                            System.out.println("Por favor inserir um numero valido: ");
+
+                        }
+                    }
                     System.out.print("Qual o ataque? ");
-                    int ataque = Integer.parseInt(scanner.nextLine());
+                    int ataque;
+                    while(true) {
+                        try {
+                            ataque = Integer.parseInt(scanner.nextLine());
+                            break;
+                        } catch (NumberFormatException e) {
+                            System.out.println("Por favor inserir um numero valido: ");
+
+                        }
+                    }
                     System.out.print("Qual o ataque mágico? ");
-                    int ataqueM = Integer.parseInt(scanner.nextLine());
+                    int ataqueM;
+                    while(true) {
+                        try {
+                            ataqueM = Integer.parseInt(scanner.nextLine());
+                            break;
+                        } catch (NumberFormatException e) {
+                            System.out.println("Por favor inserir um numero valido: ");
+
+                        }
+                    }
                     System.out.print("Qual a defesa? ");
-                    int defesa = Integer.parseInt(scanner.nextLine());
+                    int defesa;
+                    while(true) {
+                        try {
+                            defesa = Integer.parseInt(scanner.nextLine());
+                            break;
+                        } catch (NumberFormatException e) {
+                            System.out.println("Por favor inserir um numero valido: ");
+
+                        }
+                    }
                     System.out.print("Qual a defesa mágica? ");
-                    int defesaM = Integer.parseInt(scanner.nextLine());
+                    int defesaM;
+                    while(true) {
+                        try {
+                            defesaM = Integer.parseInt(scanner.nextLine());
+                            break;
+                        } catch (NumberFormatException e) {
+                            System.out.println("Por favor inserir um numero valido: ");
+
+                        }
+                    }
                     System.out.print("Qual a velocidade? ");
-                    int velocidade = Integer.parseInt(scanner.nextLine());
+                    int velocidade;
+                    while(true) {
+                        try {
+                            velocidade = Integer.parseInt(scanner.nextLine());
+                            break;
+                        } catch (NumberFormatException e) {
+                            System.out.println("Por favor inserir um numero valido: ");
+
+                        }
+                    }
                     System.out.print("Qual a destreza? ");
-                    int destreza = Integer.parseInt(scanner.nextLine());
+                    int destreza;
+                    while(true) {
+                        try {
+                            destreza = Integer.parseInt(scanner.nextLine());
+                            break;
+                        } catch (NumberFormatException e) {
+                            System.out.println("Por favor inserir um numero valido: ");
+
+                        }
+                    }
                     System.out.print("Qual a experiência? ");
-                    int exp = Integer.parseInt(scanner.nextLine());
+                    int exp;
+                    while(true) {
+                        try {
+                            exp = Integer.parseInt(scanner.nextLine());
+                            break;
+                        } catch (NumberFormatException e) {
+                            System.out.println("Por favor inserir um numero valido: ");
+
+                        }
+                    }
                     System.out.print("Qual o Nível Atual? ");
-                    int nivelAtual = Integer.parseInt(scanner.nextLine());
+                    int nivelAtual;
+                    while(true) {
+                        try {
+                            nivelAtual = Integer.parseInt(scanner.nextLine());
+                            break;
+                        } catch (NumberFormatException e) {
+                            System.out.println("Por favor inserir um numero valido: ");
+
+                        }
+                    }
 
                     personagemDAO.create(new Personagem(0, nome, raca, profissao, mana, ataque, ataqueM, defesa, defesaM, velocidade, destreza, exp, nivelAtual));
 
