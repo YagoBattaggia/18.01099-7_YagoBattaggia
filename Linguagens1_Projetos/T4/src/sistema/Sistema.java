@@ -53,7 +53,7 @@ public class Sistema {
                     int destreza = Integer.parseInt(scanner.nextLine());
                     System.out.print("Qual a experiência? ");
                     int exp = Integer.parseInt(scanner.nextLine());
-                    System.out.print("Qual o nívelAtual? ");
+                    System.out.print("Qual o Nível Atual? ");
                     int nivelAtual = Integer.parseInt(scanner.nextLine());
 
                     personagemDAO.create(new Personagem(0, nome, raca, profissao, mana, ataque, ataqueM, defesa, defesaM, velocidade, destreza, exp, nivelAtual));
@@ -78,46 +78,59 @@ public class Sistema {
                         int op = Integer.parseInt(s);
                         switch (op){
                             case 1:
+                                System.out.print("Qual deve ser o novo Nome? ");
+                                personagem.setNome(scanner.nextLine());
                                 break;
                             case 2:
-
+                                System.out.print("Qual deve ser a nova Raça? ");
+                                personagem.setRaca(perguntaRacas());
                                 break;
                             case 3:
-
+                                System.out.print("Qual deve ser a nova Profissão? ");
+                                personagem.setProfissao(perguntaProfissao());
                                 break;
                             case 4:
-
+                                System.out.print("Qual deve ser a nova Mana? ");
+                                personagem.setMana(Integer.parseInt(scanner.nextLine()));
                                 break;
                             case 5:
-
+                                System.out.print("Qual deve ser o novo Ataque? ");
+                                personagem.setAtaque(Integer.parseInt(scanner.nextLine()));
                                 break;
                             case 6:
-
+                                System.out.print("Qual deve ser o novo Ataque Mágico? ");
+                                personagem.setAtaqueM(Integer.parseInt(scanner.nextLine()));
                                 break;
                             case 7:
-
+                                System.out.print("Qual deve ser a nova Defesa? ");
+                                personagem.setDefesa(Integer.parseInt(scanner.nextLine()));
                                 break;
                             case 8:
-
+                                System.out.print("Qual deve ser a nova Defesa Mágico? ");
+                                personagem.setDefesaM(Integer.parseInt(scanner.nextLine()));
                                 break;
                             case 9:
-
+                                System.out.print("Qual deve ser a nova Velocidade? ");
+                                personagem.setVelocidade(Integer.parseInt(scanner.nextLine()));
                                 break;
                             case 10:
-
+                                System.out.print("Qual deve ser a nova Destreza? ");
+                                personagem.setDestreza(Integer.parseInt(scanner.nextLine()));
                                 break;
                             case 11:
-
+                                System.out.print("Qual deve ser a nova Experiência? ");
+                                personagem.setExperiencia(Integer.parseInt(scanner.nextLine()));
                                 break;
                             case 12:
-
+                                System.out.print("Qual deve ser o novo Nível? ");
+                                personagem.setNivelAtual(Integer.parseInt(scanner.nextLine()));
                                 break;
                             default:
                                 System.out.println("Opcao invalida!!");
                                 break;
                         }
                     }
-
+                    
 
 
 

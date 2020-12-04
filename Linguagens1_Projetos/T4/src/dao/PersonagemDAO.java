@@ -85,10 +85,28 @@ public class PersonagemDAO implements Dao<Personagem>{
             return false;
         }
     }
-
+//UPDATE demo SET name = 'SqLITE' WHERE id = 1
     @Override
     public void update(Personagem personagem) {
-
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE personagens SET (nomePersonagem, raca, profissao, mana, ataque, ataqueM, defesa, defesaM, velocidade, destreza, experiencia, nivelAtual) VALUES (?,?,?,?,?,?,?,?,?,?,?,?) WHERE ID = ?");
+            preparedStatement.setString(1, personagem.getNome());
+            preparedStatement.setString(2, personagem.getRaca().toString());
+            preparedStatement.setString(3, personagem.getProfissao().toString());
+            preparedStatement.setInt(4, personagem.getMana());
+            preparedStatement.setInt(5, personagem.getAtaque());
+            preparedStatement.setInt(6, personagem.getAtaqueM());
+            preparedStatement.setInt(7, personagem.getDefesa());
+            preparedStatement.setInt(8, personagem.getDefesaM());
+            preparedStatement.setInt(9, personagem.getVelocidade());
+            preparedStatement.setInt(10, personagem.getDestreza());
+            preparedStatement.setInt(11, personagem.getExperiencia());
+            preparedStatement.setInt(12, personagem.getNivelAtual());
+            preparedStatement.setInt(13, personagem.getId());
+            preparedStatement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
