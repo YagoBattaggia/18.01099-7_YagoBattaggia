@@ -8,10 +8,20 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe que vai servir de DAO para o personagem.
+ * @author Guilherme Ballardini - Guiballa@hotmail.com
+ * @author Yago Garcia Battaggia - yagobattaggia@gmail.com
+ * @since 04/12/2020
+ * @version 1.0
+ */
 public class PersonagemDAO implements Dao<Personagem>{
     private Connection connection;
     private String dbConnectionString = "jdbc:sqlite:sqlite.db";
 
+    /**
+     * connection é obtido pela funcao DriverManager.getConnection
+     */
     public PersonagemDAO(){
         try {
             connection = DriverManager.getConnection((dbConnectionString));
@@ -19,6 +29,12 @@ public class PersonagemDAO implements Dao<Personagem>{
             e.printStackTrace();
         }
     }
+
+    /**
+     * Busca no banco de dados e salva os dados encontrados em uma Lista
+     * <br> Caso tenha erro, imprime no console
+     * @return Lista com os dados encontrados no banco de dados
+     */
     @Override
     public List getAll() {
         List<Personagem> personagens = new ArrayList<>();
@@ -51,6 +67,11 @@ public class PersonagemDAO implements Dao<Personagem>{
         return personagens;
     }
 
+    /**
+     * Adiciona o personagem ao banco de dados
+     * <br> Caso tenha erro, imprime no console
+     * @param personagem Objeto do personagem a ser adicionado
+     */
     @Override
     public void create(Personagem personagem) {
         try{
@@ -73,6 +94,11 @@ public class PersonagemDAO implements Dao<Personagem>{
         }
     }
 
+    /**
+     * Remove um personagem do banco de dados
+     * <br> Caso tenha erro, imprime no console
+     * @param ID id do personagem a ser deletado do banco de dados
+     */
     @Override
     public boolean delete(int ID) {
         try{
@@ -85,7 +111,12 @@ public class PersonagemDAO implements Dao<Personagem>{
             return false;
         }
     }
-//UPDATE demo SET name = 'SqLITE' WHERE id = 1
+
+    /**
+     * Edita um personagem do banco de dados
+     * <br> Caso tenha erro, imprime no console
+     * @param personagem objeto personagem que deve ser substituído no banco de dados
+     */
     @Override
     public void update(Personagem personagem) {
         try{
@@ -109,6 +140,12 @@ public class PersonagemDAO implements Dao<Personagem>{
         }
     }
 
+    /**
+     * Busca no banco de dados e salva um dado especifico encontrado em uma Lista
+     * <br> Caso tenha erro, imprime no
+     * @param ID id do personagem que deve ser buscado no banco de dados
+     * @return Objeto com os dados encontrados no banco de dados
+     */
     @Override
     public Personagem getOneData(int ID) {
         try{

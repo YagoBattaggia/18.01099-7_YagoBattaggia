@@ -12,9 +12,19 @@ import java.util.Scanner;
 
 /* TODO JAVADOCS, RAs, try and catch para as strings */
 
+/**
+ * Classe concreta que representa o sistema principal. Ela que vai executar o sistema.
+ * @author Guilherme Ballardini - Guiballa@hotmail.com
+ * @author Yago Garcia Battaggia - yagobattaggia@gmail.com
+ * @since 04/12/2020
+ * @version 1.0
+ */
 public class Sistema {
     PersonagemDAO personagemDAO = new PersonagemDAO();
 
+    /**
+     * Método run, ele vai ser o principal metodo do programa e vai funcionar até escolherem a opção 0.
+     */
     public void run() throws IOException, InterruptedException {
         boolean alive = true;
         int opcao;
@@ -170,6 +180,10 @@ public class Sistema {
         System.out.println("4 - Deletar algum personagem.");
         System.out.println("0 - Sair do programa.");
     }
+    /**
+     * Pergunta quais alterações o usuário deseja fazer no personagem
+     * @return String[] contendo as alterações desejadas pelo usuário
+     */
     private String[] perguntaAlteracao() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("O que deseja alterar?");
@@ -201,6 +215,11 @@ public class Sistema {
             }
         }
     }
+
+    /**
+     * Pergunta qual a profissão do personagem
+     * @return Enum Profissões referente à profissão escolhida
+     */
 
     private Profissoes perguntaProfissao() {
         System.out.println("Qual a profissão?");
@@ -271,6 +290,10 @@ public class Sistema {
         return null;
     }
 
+    /**
+     * Pergunta qual a raça do personagem
+     * @return Enum Racas referente à raça escolhida
+     */
     private Racas perguntaRacas() {
         System.out.println("Qual a raça?");
         System.out.println("1 - DRACONATO");
